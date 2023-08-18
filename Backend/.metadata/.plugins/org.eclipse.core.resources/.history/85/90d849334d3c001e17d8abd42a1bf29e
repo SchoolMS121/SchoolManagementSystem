@@ -1,0 +1,36 @@
+package com.app.entities;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Classroom {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int classroom_id;
+	
+	private String section;
+	@ManyToMany
+	@JoinColumn(name="teacher_id",referencedColumnName = "")
+	private Teacher teacher
+	
+	
+
+}

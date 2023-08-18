@@ -1,0 +1,12 @@
+package com.app.entities;
+
+import javax.persistence.Column;
+
+public class Issue {
+
+	private int issue_id;
+	@Column(length=30)
+	private String type;
+	
+	private String Details;
+}

@@ -1,0 +1,42 @@
+package com.app.entities;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@MappedSuperclass
+public abstract class User {
+
+	@Column(name = "email", length = 30)
+	private String email;
+	@Column(name = "password", nullable = false, length = 30)
+	private String password;
+
+	private LocalDate DOB;
+
+	@Column(length = 10)
+	private String gender;
+
+	@Column(length = 250)
+	private String address;
+
+	@Column(length = 13)
+	private String mobile_no;
+
+}

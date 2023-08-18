@@ -1,0 +1,10 @@
+package com.app.entities;
+
+public class Attendance {
+
+	private int user_id;
+	
+	private Date date;
+	
+	
+}

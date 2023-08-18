@@ -1,0 +1,37 @@
+package com.app.entities;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Parent extends User{
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long parent_id;
+	
+	private List<Issue> issue=new ArrayList<E>()
+	
+	/*
+	 * @OneToOne
+	 * 
+	 * @JoinColumn(name="parent") private Result result;
+	 */
+}
