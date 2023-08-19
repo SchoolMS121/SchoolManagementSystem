@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Classroom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int classroom_id;
+	private Long classroom_id;
 
 	private String division;
 	@ManyToMany(cascade = CascadeType.ALL)

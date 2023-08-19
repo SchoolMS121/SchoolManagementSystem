@@ -23,7 +23,7 @@ import lombok.ToString;
 public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int result_id;
+	private Long result_id;
 
 	private Double marks;
 	@OneToOne

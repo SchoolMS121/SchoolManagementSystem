@@ -1,16 +1,15 @@
 package com.app.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-import com.app.dto.AuthreqDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import com.app.entities.Parent;
+import com.app.entities.Teacher;
 
 public interface ParentDao extends JpaRepository<Parent, Long> {
 
-	
-
-	
-
-	Parent findByEmailAndPassword(String email, String password);
-
+	@Query("select p from Parent p where p.p_first_name = ?1")
+	Optional<Parent> getParentDetails(String p_first_name);
 }

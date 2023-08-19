@@ -24,9 +24,10 @@ public class Exam {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int exam_id;
+	private Long exam_id;
 
 	private LocalDate date;
+	
 	@Column(length = 30)
 	private String exam_name;
 
