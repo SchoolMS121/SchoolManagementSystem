@@ -31,7 +31,7 @@ public class Timetable {
 	private Classroom classroom;
 
 	private String day;
-
+ 
 	private LocalTime time;
 
 	private String subject;
