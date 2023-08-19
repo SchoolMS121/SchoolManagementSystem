@@ -12,4 +12,9 @@ public interface ParentDao extends JpaRepository<Parent, Long> {
 
 	@Query("select p from Parent p where p.p_first_name = ?1")
 	Optional<Parent> getParentDetails(String p_first_name);
+	
+	Optional<Parent> findByEmailAndPassword(String email, String password);
+
+	
+	
 }
