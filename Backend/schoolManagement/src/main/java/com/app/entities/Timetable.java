@@ -24,14 +24,14 @@ import lombok.ToString;
 public class Timetable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int tt_id;
+	private Long tt_id;
 
 	@OneToOne
 	@JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id")
 	private Classroom classroom;
 
 	private String day;
-
+ 
 	private LocalTime time;
 
 	private String subject;
