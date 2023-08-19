@@ -22,7 +22,7 @@ public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int subject_id;
+	private Long subject_id;
 	@Column(length = 30)
 	private String subject_name;
 	@Column(length = 250)

@@ -24,7 +24,7 @@ import lombok.ToString;
 public class Attendance {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int user_id;
+	private Long user_id; //primary key
 	
 	private LocalDate date;
 	
