@@ -1,0 +1,17 @@
+package com.app.service;
+
+import com.app.dto.AttendanceRespDto;
+import com.app.dto.AuthRespDTO;
+import com.app.dto.AuthreqDTO;
+import com.app.dto.ResultRespDto;
+import com.app.entities.Parent;
+
+public interface ParentService {
+
+	AuthRespDTO signInParent(AuthreqDTO request);
+
+	ResultRespDto getResult(Parent parent);
+
+	AttendanceRespDto getAttendance(Parent parent);
+
+}

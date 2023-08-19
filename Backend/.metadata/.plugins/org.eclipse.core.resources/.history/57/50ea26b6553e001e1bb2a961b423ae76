@@ -1,0 +1,10 @@
+package com.app.dto;
+
+public class IssueDto {
+
+	 private String details;
+	 
+	 private boolean is_resolved;
+	 
+	 private String type_of_issue
+}

@@ -1,0 +1,23 @@
+package com.app.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+
+public class ReqIssueDto {
+
+	private int parent_id;
+
+	
+
+	private String details;
+
+	private boolean is_resolved;
+	
+	private String type_of_issue;
+
+}

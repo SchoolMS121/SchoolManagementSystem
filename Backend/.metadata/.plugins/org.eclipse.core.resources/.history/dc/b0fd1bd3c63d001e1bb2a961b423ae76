@@ -1,0 +1,53 @@
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.AuthRespDTO;
+import com.app.dto.AuthreqDTO;
+import com.app.service.ParentService;
+
+@RestController
+@RequestMapping("/parent")
+public class ParentController {
+	@Autowired
+	private ParentService parentService;
+	@PostMapping("/signIn")
+	public ResponseEntity<?> signInParent(@RequestBody AuthreqDTO request)
+	{
+		System.out.println(request.toString());
+		AuthRespDTO resp=parentService.signInParent(request);
+		return ResponseEntity.ok(resp);		
+	}
+	
+	@GetMapping("/results/{parent_id}")
+	public ResponseEntity<?> getResultOfStudent(@PathVariable Long student_id){
+		
+		Student stu = new Student();
+		stu.setStudent_id(student_id);
+		ResultRespDto res = stdService.getResult(stu);
+		
+		System.out.println(res.toString());
+		return ResponseEntity.ok(res);
+		
+	}
+	
+	@GetMapping("/attendance/{student_id}")
+public ResponseEntity<?> getAttendanceOfStudent(@PathVariable Long student_id){
+		
+		Student stu = new Student();
+		stu.setStudent_id(student_id);
+		AttendanceRespDto res = stdService.getAttendance(stu);
+		
+		System.out.println(res.toString());
+		return ResponseEntity.ok(res);
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package com.app.dto;
+
+public class ReqIssueDto {
+
+	 private String details;
+	 
+	 private boolean is_resolved;
+	 
+	 private String type_of_issue;
+	 
+	 private int parent_id;
+}
