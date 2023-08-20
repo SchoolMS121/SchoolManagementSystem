@@ -5,12 +5,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-
 @Setter
 @ToString
-public class AuthRespDTO {
+public class ResultReqDto {
 
-	private Long parent_id;
+	private Double marks;
+	private String s_first_name;
 	private String p_first_name;
-	private String p_last_name;
+	private String subject_name;
+	private String exam_name;
 }

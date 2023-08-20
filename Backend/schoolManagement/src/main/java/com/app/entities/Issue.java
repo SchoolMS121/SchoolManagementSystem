@@ -23,7 +23,7 @@ import lombok.ToString;
 public class Issue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int issue_id;
+	private Long issue_id;
 
 	@ManyToOne
 	@JoinColumn(name = "parent_id")
@@ -32,7 +32,7 @@ public class Issue {
 	@Column(length = 30)
 	private String type;
 
-	private String Details;
+	private String details;
 
 	private boolean is_resolved;
 

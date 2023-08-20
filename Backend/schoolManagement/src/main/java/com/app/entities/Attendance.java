@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,8 @@ import lombok.ToString;
 public class Attendance {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
+
+	private Long user_id; //primary key
 	
 	private LocalDate date;
 	
@@ -38,6 +40,9 @@ public class Attendance {
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 	
+	@OneToOne
+	@JoinColumn(name="parent_id")
+	private Parent parent;
 	
 	
 }

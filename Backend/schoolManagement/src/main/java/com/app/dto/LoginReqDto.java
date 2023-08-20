@@ -5,12 +5,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-
 @Setter
 @ToString
-public class AuthRespDTO {
+public class LoginReqDto {
 
-	private Long parent_id;
-	private String p_first_name;
-	private String p_last_name;
+	private String email;
+	
+	private String password; 
 }
