@@ -6,16 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired; import
   org.springframework.stereotype.Service; import
   org.springframework.transaction.annotation.Transactional;
 
+import com.app.dao.AdminAttendanceDao;
 import com.app.dao.AdminDao;
 import com.app.dao.AdminParentDao;
+import com.app.dao.AdminSubjectDao;
 import com.app.dao.AdminTeacherDao;
 import com.app.dao.AdminTimeTableDao;
 import com.app.dao.ClassroomDao;
+import com.app.dto.AttendanceRequestDto;
+import com.app.dto.ClassroomRequestDto;
 import com.app.dto.SignUpParentDto;
 import com.app.dto.TimeTableDto;
+import com.app.entities.Attendance;
 import com.app.entities.Classroom;
 import com.app.entities.Parent;
 import com.app.entities.Student;
+import com.app.entities.Subject;
 //import com.app.entities.Person;
 import com.app.entities.Teacher;
 import com.app.entities.Timetable;
@@ -31,6 +37,8 @@ import com.app.entities.Timetable;
   @Autowired private AdminParentDao parentDao;
   @Autowired private AdminTimeTableDao ttableDao;
   @Autowired private ClassroomDao classDao;
+  @Autowired private AdminSubjectDao subjectDao;
+  @Autowired private AdminAttendanceDao attendanceDao;
   @Autowired
   private ModelMapper mapper;
 @Override
@@ -116,6 +124,48 @@ public Timetable updateTimeTable(Long classroom_id, TimeTableDto ttable) {
 	tt.setTt_id(ttable.getTt_id());
 	
 	return ttableDao.save(tt);
+}
+
+
+/*
+ * @Override public Classroom addClassroom(Classroom classroom) { Subject subId
+ * =classDao.findB
+ * 
+ * return }
+ */
+ 
+@Override
+public String deletTimeTableData(Long ttId) {
+	Timetable foundTable =ttableDao.findById(ttId).orElseThrow();
+	ttableDao.deleteById(ttId);
+	return "Time Table Data Deleted Successfully";
+}
+@Override
+public Classroom addClassroom(Long subjectId, Long teacherId, ClassroomRequestDto classroom) {
+	Subject subId =subjectDao.findById(subjectId).orElseThrow();
+	Teacher teachId =teacherDao.findById(teacherId).orElseThrow();
+	Classroom cls =new Classroom();
+	//Classroom cls1 =mapper.map(classroom, Classroom.class);
+	cls.setSubject(subId);
+	cls.setTeacher(teachId);
+	cls.setClassroom_id(classroom.getClassroom_id());
+	cls.setDivision(classroom.getDivision());
+	cls.setStd(classroom.getStd());
+	
+	return classDao.save(cls);
+}
+@Override
+public Attendance addAttendance(Long studentId, Long teacherId, AttendanceRequestDto request) {
+	Teacher teachId =teacherDao.findById(teacherId).orElseThrow();
+	Student stdId =adminDao.findById(studentId).orElseThrow();
+	Attendance attnd =new Attendance();
+	attnd.setStudent(stdId);
+	attnd.setTeacher(teachId);
+	attnd.setStatus(request.isStatus());
+	attnd.setDate(request.getDate());
+	attnd.setUser_id(request.getUser_id());
+			
+	return attendanceDao.save(attnd);
 }
   
 	/*

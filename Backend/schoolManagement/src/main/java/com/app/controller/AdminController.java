@@ -15,8 +15,12 @@ import
   org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.AttendanceRequestDto;
+import com.app.dto.ClassroomRequestDto;
 import com.app.dto.SignUpParentDto;
 import com.app.dto.TimeTableDto;
+import com.app.entities.Attendance;
+import com.app.entities.Classroom;
 import com.app.entities.Parent;
 import com.app.entities.Student;
 import com.app.entities.Teacher;
@@ -90,7 +94,24 @@ import com.app.service.AdminService;
 	  
 	     return adminService.updateTimeTable(classroom_id,ttable);
   }
+  @DeleteMapping("/timetable/{ttId}")
+  public ApiResponse deleteTimeTableData(@PathVariable Long ttId) 
+  {
+	  return new ApiResponse(adminService.deletTimeTableData(ttId));
+  }
   
- 
+	
+	  @PostMapping("/addClassroom/{subjectId}/{teacherId}") 
+	  public Classroom addClassroom(@PathVariable Long subjectId,@PathVariable Long teacherId,@RequestBody  ClassroomRequestDto classroom) {
+	  
+	  return adminService.addClassroom(subjectId,teacherId,classroom);
+	  
+	  }
+	  @PostMapping("/attendance/{studentId}/{teacherId}") 
+	  public Attendance addAttendance(@PathVariable Long studentId,@PathVariable Long teacherId,@RequestBody  AttendanceRequestDto classroom) {
+	  
+	  return adminService.addAttendance(studentId,teacherId,classroom);
+	  
+	  }
   }
  
