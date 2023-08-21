@@ -21,7 +21,7 @@ public class ResultRespDto {
 	private double marks;
 	private String s_first_name;
 	private String s_last_name;
-	private String subject_name;
+	
 	private int std ;
 	private String exam_name ;
 	private String p_first_name;

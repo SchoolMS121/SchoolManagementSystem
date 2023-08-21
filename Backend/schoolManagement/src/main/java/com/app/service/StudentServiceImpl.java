@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.AttendenceDao;
 import com.app.dao.ResultDao;
 import com.app.dao.StudentDao;
@@ -36,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public LoginRespDto loginStudent(LoginReqDto request) {
 		Student std = stdDao.findByEmailAndPassword(request.getEmail(), request.getPassword())
-				.orElseThrow(() -> new RuntimeException("Invalid Email or Password !!!!"));
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid Email and Psssword!!! -> in Student login"));
 		return mapper.map(std, LoginRespDto.class);
 	}
 
@@ -44,10 +45,14 @@ public class StudentServiceImpl implements StudentService {
 	public ResultRespDto getResult(Student student_id) {
 
 		List<ResultRespDto> result = resDao.getResult(student_id);
-		
+		double x = 0l;
 //Calculate % and Marks for a particular student
+		for (ResultRespDto r : result) {
+			x=x+r.getMarks();
+		}
 		
 		ResultRespDto res = result.get(0); //for testing sent only one data // send total marks and %
+		res.setMarks(x);
 		System.out.println(result.toString());
 		return res;
 	}
