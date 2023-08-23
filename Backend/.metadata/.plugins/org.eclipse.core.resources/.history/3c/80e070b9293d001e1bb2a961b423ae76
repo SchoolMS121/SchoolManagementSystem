@@ -1,8 +1,0 @@
-package com.app.dto;
-
-public class AuthRespDTO {
-
-	private Long parent_id;
-	private String first_name;
-	private String last_name;
-}
