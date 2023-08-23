@@ -1,0 +1,9 @@
+package com.app.dto;
+
+public class AuthreqDTO {
+	
+	private String email;
+	
+	private String password;
+
+}

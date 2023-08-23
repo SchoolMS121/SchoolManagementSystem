@@ -1,0 +1,12 @@
+package com.app.dao;
+
+import com.app.dto.AuthreqDTO;
+import com.app.entities.Parent;
+
+public interface ParentDao {
+
+	Parent findByEmailAndPassword();
+
+	Parent findByEmailAndPassword(AuthreqDTO request);
+
+}

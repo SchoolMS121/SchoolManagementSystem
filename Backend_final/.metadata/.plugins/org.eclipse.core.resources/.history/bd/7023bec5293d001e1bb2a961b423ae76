@@ -1,0 +1,29 @@
+package com.app.service;
+
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.dao.ParentDao;
+import com.app.dto.AuthRespDTO;
+import com.app.dto.AuthreqDTO;
+import com.app.entities.Parent;
+@Service
+@Transactional
+public class ParentServiceImpl implements ParentService {
+	@Autowired
+	private ParentDao parentDao;
+	
+     private ModelMapper mapper;
+	
+
+	@Override
+	public AuthRespDTO signInParent(AuthreqDTO request) {
+		
+		Parent parent=parentDao.findByEmailAndPassword(request);
+		return null;
+	}
+
+}

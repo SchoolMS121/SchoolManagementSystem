@@ -1,0 +1,23 @@
+package com.app.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@table
+public class User extends Person{
+	
+	@Column(name="email",nullable=false,unique = true,length=30)
+	private String email;
+	@Column(name="password",nullable = false,length=30)
+	private String password;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
+}

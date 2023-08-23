@@ -1,0 +1,10 @@
+package com.app.entities;
+
+public class Exam {
+
+	private int exam_id;
+	
+	private Date date;
+	
+	
+}
