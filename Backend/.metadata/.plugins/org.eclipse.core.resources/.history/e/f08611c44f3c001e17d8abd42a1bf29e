@@ -1,0 +1,14 @@
+package com.app.entities;
+
+import java.sql.Time;
+
+public class Timetable {
+
+	private int time_table_id;
+	
+	private String day;
+	
+	private Time time;
+	
+	
+}

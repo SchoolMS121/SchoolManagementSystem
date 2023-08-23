@@ -1,0 +1,9 @@
+package com.app.dao;
+
+import com.app.entities.Parent;
+
+public interface ParentDao {
+
+	Parent findByEmailAndPassword();
+
+}
