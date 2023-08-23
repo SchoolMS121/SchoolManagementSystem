@@ -53,7 +53,7 @@ public class TeacherController {
 	}
 
 	@PutMapping("/issue/{issue_id}")
-	public ResponseEntity<?> handleIssue(@PathVariable Long issue_id, IssueReqDto request){
+	public ResponseEntity<?> handleIssue(@PathVariable Long issue_id,@RequestBody IssueReqDto request){
 	
 		
 		return ResponseEntity.ok(teaService.handleIssue(issue_id , request));
@@ -69,11 +69,11 @@ public class TeacherController {
 	  }
 	
 	
-	@PostMapping("/timetable/{classroom_id}")
-	  public Timetable addNewTimetable(@PathVariable Long classroom_id, @RequestBody TimeTableDto ttable) {
+	@PostMapping("/timetable/{ttId}")
+	  public ResponseEntity<?> addNewTimetable(@RequestBody TimeTableDto ttable) {
 		  
 		  
-		     return teaService.addTimeTable(classroom_id,ttable);
+		     return ResponseEntity.ok(teaService.addTimeTable(ttable));
 	  }
 }
 

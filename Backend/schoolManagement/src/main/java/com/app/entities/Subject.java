@@ -17,16 +17,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Subject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long subject_id;
-	@Column(length = 30)
-	private String subject_name;
+	@Column(name = "subject_id")
+	private Long subjectId;
+	@Column(length = 30, name = "subject_name")
+	private String subjectName;
 	@Column(length = 250)
 	private String description;
 
-	private int std;
+	
+	
+	
 }

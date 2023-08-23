@@ -19,12 +19,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Issue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long issue_id;
+	@Column(name = "issue_id")
+	private Long issueId;
 
+	// one issue table can consist many issues of a single parent.
 	@ManyToOne
 	@JoinColumn(name = "parent_id")
 	private Parent parent;
@@ -34,6 +35,7 @@ public class Issue {
 
 	private String details;
 
-	private boolean is_resolved;
+	@Column(name = "is_resolved")
+	private boolean resolved;
 
 }

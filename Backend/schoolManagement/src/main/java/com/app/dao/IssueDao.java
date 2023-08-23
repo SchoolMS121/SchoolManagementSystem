@@ -10,7 +10,7 @@ import com.app.entities.Issue;
 
 public interface IssueDao extends JpaRepository<Issue, Long> {
 
-	@Query("select new com.app.dto.IssueRespDto(p.p_first_name , i.type , i.details , i.is_resolved)  "
-			+ "from Issue i , Parent p where i.parent = p.parent_id")
+	@Query("select new com.app.dto.IssueRespDto(p.pFirstName , i.type , i.details , i.resolved)  "
+			+ "from Issue i , Parent p where i.parent = p.parentId")
 	List<IssueRespDto> getAllIssues();
 }

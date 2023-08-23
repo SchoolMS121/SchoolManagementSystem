@@ -10,8 +10,11 @@ import com.app.entities.Teacher;
 
 public interface ParentDao extends JpaRepository<Parent, Long> {
 
-	@Query("select p from Parent p where p.p_first_name = ?1")
-	Optional<Parent> getParentDetails(String p_first_name);
+	
+//	Optional<Parent> findByPFirstName(String pFirstName);
+	
+	@Query("select p from Parent p where p.pFirstName = ?1 ")
+	Optional<Parent> findByPFirstName(String pFirstName);
 	
 	Optional<Parent> findByEmailAndPassword(String email, String password);
 

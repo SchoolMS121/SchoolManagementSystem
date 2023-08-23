@@ -12,11 +12,11 @@ import lombok.ToString;
 @Setter
 @ToString
   public class SignUpParentDto { 
-private Long parent_id;
+private Long parentId;
 
-private String p_first_name;
+private String pFirstName;
 
-private String p_last_name;
+private String pLastName;
 	  
  private LocalDate DOB;
   
@@ -24,7 +24,7 @@ private String p_last_name;
   
   private String address;
   
-  private String mobile_no;
+  private String mobileNo;
   
   private String email;
   

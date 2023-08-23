@@ -10,6 +10,8 @@ import lombok.ToString;
 
 public class ReqIssueDto {
 
+	
+	
 	private String details;
 
 	//private boolean is_resolved;

@@ -1,6 +1,7 @@
 
 package com.app.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,6 @@ import com.app.dto.AuthRespDTO;
 import com.app.dto.AuthreqDTO;
 import com.app.dto.ReqIssueDto;
 import com.app.dto.ResultRespDto;
-import com.app.entities.Issue;
-import com.app.entities.Parent;
 import com.app.entities.Student;
 import com.app.service.ParentService;
 
@@ -40,10 +39,9 @@ public class ParentController {
 	@GetMapping("/results/{parent_id}")
 	public ResponseEntity<?> getResultOfStudent(@PathVariable Long parent_id){
 		
-		Parent parent = new Parent();
-		parent.setParent_id(parent_id);
 		
-		ResultRespDto res = parentService.getResult(parent);
+		
+		ResultRespDto res = parentService.getResult(parent_id);
 		
 		System.out.println(res.toString());
 		return ResponseEntity.ok(res);
@@ -53,19 +51,18 @@ public class ParentController {
 	@GetMapping("/attendance/{parent_id}")
 public ResponseEntity<?> getAttendanceOfStudent(@PathVariable Long parent_id){
 		
-		Parent parent = new Parent();
-		parent.setParent_id(parent_id);
 		
-		AttendanceRespDto res = parentService.getAttendance(parent);
+		List<AttendanceRespDto> res = parentService.getAttendance(parent_id);
 		
 		System.out.println(res.toString());
 		return ResponseEntity.ok(res);
 		
 	}
+
 	@GetMapping("/student/{student_id}")
-	public Optional<Student> getChildInfo(@PathVariable Long student_id)
+	public Optional<Student> getChildInfo(@PathVariable Long parent_id)
 	{
-		Optional<Student> childInfo=parentService.getChildInfo(student_id);
+		Optional<Student> childInfo=parentService.getChildInfo(parent_id);
 		
 		return childInfo;
 		

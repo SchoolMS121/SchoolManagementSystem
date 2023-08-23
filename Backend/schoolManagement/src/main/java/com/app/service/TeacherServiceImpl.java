@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,25 +69,23 @@ public class TeacherServiceImpl implements TeacherService {
 		
 		System.out.println(request.getExam_name());
 		
-		Exam e = examDao.getExamDetails(request.getExam_name())
+		Exam e = examDao.findByExamName(request.getExam_name())
 				.orElseThrow(() -> new ResourceNotFoundException("Exam details not found in addResult of teaservice"));
+		System.out.println(e);
 
-		Subject su = subjDao.getSubjectDetails(request.getSubject_name())
+		Subject su = subjDao.findBySubjectName(request.getSubject_name())
 				.orElseThrow(() -> new ResourceNotFoundException("Subject details not found in addResult of teaservice"));
 		System.out.println(su);
 		
-		Student st = stuDao.getStudentDetails(request.getS_first_name())
+		Student st = stuDao.findBySFirstName(request.getS_first_name())
 				.orElseThrow(() -> new ResourceNotFoundException("Student details not found in addResult of teaservice"));
 		System.out.println(st);
 		
-		Parent p = parDao.getParentDetails(request.getP_first_name())
-				.orElseThrow(() -> new ResourceNotFoundException("Parent details not found in addResult of teaservice"));
-		System.out.println(p);
 		
 		Result r = new Result();
 		r.setExam(e);
 		r.setMarks(request.getMarks());
-		r.setParent(p);
+		
 		r.setStudent(st);
 		r.setSubject(su);
 		System.out.println(r);
@@ -108,32 +107,33 @@ public class TeacherServiceImpl implements TeacherService {
 		Issue issue = issueDao.findById(issue_id)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid Issue ID !!!!! in handle issue of "));
 		
-		Parent p = parDao.getParentDetails(req.getP_first_name()).orElseThrow(()-> new ResourceNotFoundException("Parent  not found in handle issue of teaservice"));
+		Parent p = parDao.findByPFirstName(req.getP_first_name()).orElseThrow(()-> new ResourceNotFoundException("Parent  not found in handle issue of teaservice"));
 		
-		Issue i = new Issue(issue_id, p, req.getType(), req.getDetails(), true);
+		Issue i = new Issue(issue_id, p, req.getType(), req.getDetails(), true);//resolving issue by passing true
 		
 		
-		issue.getParent().getIssue().size();
+//		issue.getParent().getIssue().size();
 		
 		issueDao.save(i);
 		return new ApiResponse("Issue resolved");
 		
 		
+		
 	}
-
-	
-	
 	
 	@Override
 	public Attendance addAttendance(AttendanceReqDto request) {
 		Teacher teach =teaDao.findById(request.getTeacher_id()).orElseThrow(()-> new ResourceNotFoundException("teacher not found in add Atte of teaService"));
-		Student std = stuDao.getStudentDetails(request.getS_first_name()).orElseThrow(()->new ResourceNotFoundException("Student not found in add Atte of teaService"));
+		
+		Student std = stuDao.findBySFirstName(request.getS_first_name()).orElseThrow(()->new ResourceNotFoundException("Student not found in add Atte of teaService"));
+		std.getMyParent().getIssue().size();
+		std.getMyParent().getStudents().size();
 		Attendance attnd =new Attendance();
 		attnd.setStudent(std);
 		attnd.setTeacher(teach);
 		attnd.setStatus(request.isStatus());
 		attnd.setDate(request.getDate());
-		attnd.setUser_id(0l);
+		attnd.setUserId(0l);
 				
 		return attDao.save(attnd);
 	
@@ -143,19 +143,22 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	
 	@Override
-	public Timetable addTimeTable(Long classroom_id, TimeTableDto ttable) {
-		Classroom class_id=classDao.findById(classroom_id).orElseThrow();
-		class_id.getStudent().size();
-		Timetable tt=new Timetable();
-		tt.setClassroom(class_id);
+	public String addTimeTable(TimeTableDto ttable) {
+
+		Classroom std = classDao.findByStdAndDivision(ttable.getStd(),ttable.getDivision()).orElseThrow(()-> new ResourceNotFoundException("class not found in adminservie"));
+		std.getTeachers().size();
+		std.getSubjects().size();
+		Subject sub = subjDao.findBySubjectName(ttable.getSubject()).orElseThrow(()-> new ResourceNotFoundException("subject not found in adminservie"));
+		
+		Timetable tt = new Timetable();
+		tt.setClassroom(std);
 		tt.setDay(ttable.getDay());
-		tt.setSubject(ttable.getSubject());
 		tt.setTime(ttable.getTime());
-		tt.setTt_id(ttable.getTt_id());
+		tt.setSubject(sub);
+		ttableDao.save(tt);
+		return "Table Added successfully";
 		
-		
-		
-		return ttableDao.save(tt);
+
 	}
 	
 	

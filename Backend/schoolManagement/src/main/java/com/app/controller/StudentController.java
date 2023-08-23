@@ -39,9 +39,8 @@ public class StudentController {
 	@GetMapping("/results/{student_id}")
 	public ResponseEntity<?> getResultOfStudent(@PathVariable Long student_id){
 		
-		Student stu = new Student();
-		stu.setStudent_id(student_id);
-		ResultRespDto res = stdService.getResult(stu);
+		
+		ResultRespDto res = stdService.getResult(student_id);
 		
 		System.out.println(res.toString());
 		return ResponseEntity.ok(res);
@@ -51,9 +50,8 @@ public class StudentController {
 	@GetMapping("/attendance/{student_id}")
 public ResponseEntity<?> getAttendanceOfStudent(@PathVariable Long student_id){
 		
-		Student stu = new Student();
-		stu.setStudent_id(student_id);
-		AttendanceRespDto res = stdService.getAttendance(stu);
+		
+		AttendanceRespDto res = stdService.getAttendance(student_id);
 		
 		System.out.println(res.toString());
 		return ResponseEntity.ok(res);

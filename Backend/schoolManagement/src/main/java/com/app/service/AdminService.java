@@ -3,11 +3,12 @@
   
   
 
-import com.app.dto.AttendanceRequestDto;
 import com.app.dto.ClassroomRequestDto;
+import com.app.dto.ParentReqDto;
 import com.app.dto.SignUpParentDto;
+import com.app.dto.StudentReqDto;
+import com.app.dto.TeacherReqDto;
 import com.app.dto.TimeTableDto;
-import com.app.entities.Attendance;
 import com.app.entities.Classroom;
 import com.app.entities.Parent;
 import com.app.entities.Student;
@@ -17,26 +18,34 @@ import com.app.entities.Timetable;
   
   public interface AdminService { 
 	 // SignUpResponseDto addStudentDetails(SignUpRequestStudentDto stud);
-	  Student addStudentDetails(Student stud);
-	  Student updateStudentsDetail(Student stud);
+	  String addStudentDetails(StudentReqDto stud);
+	  String updateStudentsDetail(StudentReqDto stud);
 	  String deleteStudentDetails(Long studentId);
-	  Teacher addTeacherDetails(Teacher teacher);
 	  
-	  Teacher updateTeacherDetails(Teacher teacher);
 	  
-	  String deleteTeacherDetails(Long teacherId);
 	  
-	  Parent updateParentDetails(SignUpParentDto parent);
+	  String addTeacherDetails(TeacherReqDto teacher);
 	  
-	  Parent addParentDetails(SignUpParentDto parent);
+	  Teacher updateTeacherDetails(TeacherReqDto teacher);
+	  
+	  String deleteTeacherDetails(int std ,String division, Long teacherId);
+	  
+	 
+	 Parent updateParentDetails(SignUpParentDto parent);
+	  
+	  Parent addParentDetails(ParentReqDto parent);
 	  
 	  String deleteParentDetails(Long parentId);
 	  
 	 
-	Timetable addTimeTable(Long classroom_id, TimeTableDto ttable);
-	Timetable updateTimeTable(Long classroom_id, TimeTableDto ttable);
-	Classroom addClassroom(Long subjectId, Long teacherId, ClassroomRequestDto classroom);
+	String addTimeTable(TimeTableDto ttable);
+	Timetable updateTimeTable( Long ttId, TimeTableDto ttable);
 	String deletTimeTableData(Long ttId);
-	Attendance addAttendance(Long studentId, Long teacherId, AttendanceRequestDto classroom);
+	
+	Classroom addClassroom(ClassroomRequestDto classroom);
+	
+//	Attendance addAttendance(AttendanceRequestDto classroom);
+	String deleteClassroomData(Long classroomId);
+	String updateClassroomDetails(ClassroomRequestDto classroom);
   }
  

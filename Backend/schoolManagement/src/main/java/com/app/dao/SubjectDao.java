@@ -10,6 +10,6 @@ import com.app.entities.Teacher;
 
 public interface SubjectDao extends JpaRepository<Subject, Long> {
 
-	@Query("select s from Subject s where s.subject_name = ?1")
-	Optional<Subject> getSubjectDetails(String subject_name);
+
+	Optional<Subject> findBySubjectName(String subjectName);
 }

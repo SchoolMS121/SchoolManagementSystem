@@ -10,9 +10,9 @@ public interface StudentService {
 
 	LoginRespDto loginStudent(LoginReqDto request);
 
-	ResultRespDto getResult(Student student_id);
+	ResultRespDto getResult(Long student_id);
 
-	AttendanceRespDto getAttendance(Student stu);
+	AttendanceRespDto getAttendance(Long stu);
 
 	
 }

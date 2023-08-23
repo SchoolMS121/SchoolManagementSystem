@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ClassroomRequestDto {
-	private Long classroom_id;
+	private Long classroomId;
 
 	private String division;
 	

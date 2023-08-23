@@ -26,7 +26,7 @@ public abstract class User {
 	@Column(length = 250)
 	private String address;
 
-	@Column(length = 13)
-	private String mobile_no;
+	@Column(length = 13, name = "mobile_no")
+	private String mobileNo;
 
 }

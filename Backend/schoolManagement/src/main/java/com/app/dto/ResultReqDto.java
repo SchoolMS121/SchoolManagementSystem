@@ -11,7 +11,6 @@ public class ResultReqDto {
 
 	private Double marks;
 	private String s_first_name;
-	private String p_first_name;
 	private String subject_name;
 	private String exam_name;
 }

@@ -10,11 +10,8 @@ import com.app.entities.Exam;
 import com.app.entities.Teacher;
 
 public interface ExamDao extends JpaRepository<Exam, Long> {
-@Query("select e from Exam e where e.exam_name = ?1 ")
-	Optional<Exam> getExamDetails(String exam_name);
 
-	
-//	List<Exam> getExamDetails(String e);
-	
-	
+	Optional<Exam> findByExamName(String examName);
+
+
 }

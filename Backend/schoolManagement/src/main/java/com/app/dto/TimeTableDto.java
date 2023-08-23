@@ -9,19 +9,23 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 
 public class TimeTableDto {
-	private Long tt_id;
-	
 
+	private int std;
 	private String day;
-	
-	 @Schema(example = "02:00")
+
+	@Schema(example = "02:00")
 	private LocalTime time;
 
 	private String subject;
+	
+	private String division;
+
 }

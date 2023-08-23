@@ -23,6 +23,6 @@ public interface TeacherService {
 
 	Attendance addAttendance(AttendanceReqDto request);
 
-	Timetable addTimeTable(Long classroom_id, TimeTableDto ttable);
+	String addTimeTable( TimeTableDto ttable);
 
 }

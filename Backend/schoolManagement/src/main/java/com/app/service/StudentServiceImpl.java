@@ -42,9 +42,11 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public ResultRespDto getResult(Student student_id) {
+	public ResultRespDto getResult(Long student_id) {
 
-		List<ResultRespDto> result = resDao.getResult(student_id);
+		Student s = new Student();
+		s.setStudentId(student_id);
+		List<ResultRespDto> result = resDao.getResult(s);
 		double x = 0l;
 //Calculate % and Marks for a particular student
 		for (ResultRespDto r : result) {
@@ -58,9 +60,12 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public AttendanceRespDto getAttendance(Student stu) {
+	public AttendanceRespDto getAttendance(Long stu) {
 		
-		List<AttendanceRespDto> attend =attDao.getAttendance(stu);
+		Student s= new Student();
+		s.setStudentId(stu);
+		
+		List<AttendanceRespDto> attend =attDao.getAttendance(s);
 		
 		AttendanceRespDto att = attend.get(0);
 		System.out.println(attend.toString());

@@ -19,17 +19,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Exam {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long exam_id;
+	@Column(name = "exam_id")
+	private Long examId;
 
 	private LocalDate date;
-	
-	@Column(length = 30)
-	private String exam_name;
+
+	@Column(length = 30, name = "exam_name")
+	private String examName;
 
 	private int type;
 
