@@ -10,7 +10,7 @@ import lombok.ToString;
 public class ResultReqDto {
 
 	private Double marks;
-	private String s_first_name;
-	private String subject_name;
-	private String exam_name;
+	private String sFirstName;
+	private String subjectName;
+	private String examName;
 }

@@ -9,9 +9,9 @@ import lombok.ToString;
 @ToString
 public class LoginRespDto {
 
-	private String s_first_name;
-	private String s_last_name;
-	private String mobile_no;
+	private String sFirstName;
+	private String sLastName;
+	private String mobileNo;
 	private String email;
 
 }

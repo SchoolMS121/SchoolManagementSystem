@@ -15,8 +15,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class AttendanceRespDto {
 
-	private String s_first_name;
-	private String s_last_name;
+	private String sFirstName;
+	private String sLastName;
 	private boolean status;
 	private LocalDate date;
 	
