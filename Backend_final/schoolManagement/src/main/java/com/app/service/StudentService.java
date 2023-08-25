@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import com.app.dto.AttendanceRespDto;
 import com.app.dto.LoginReqDto;
 import com.app.dto.LoginRespDto;
@@ -12,7 +14,7 @@ public interface StudentService {
 
 	ResultRespDto getResult(Long student_id);
 
-	AttendanceRespDto getAttendance(Long stu);
+	List<AttendanceRespDto> getAttendance(Long stu);
 
 	
 }

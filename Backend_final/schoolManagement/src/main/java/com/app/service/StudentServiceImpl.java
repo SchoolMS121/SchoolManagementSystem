@@ -44,33 +44,35 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public ResultRespDto getResult(Long student_id) {
 
-		Student s = new Student();
-		s.setStudentId(student_id);
+		Student s = stdDao.findById(student_id).orElseThrow();
+//		s.setStudentId(student_id);
 		List<ResultRespDto> result = resDao.getResult(s);
-		double x = 0l;
-//Calculate % and Marks for a particular student
+		double marks = 0l;
+		int count = 0;
 		for (ResultRespDto r : result) {
-			x=x+r.getMarks();
+			count++;
+			marks = marks + r.getMarks();
 		}
+		double percentage = (marks*100)/(count*100);
 		
-		ResultRespDto res = result.get(0); //for testing sent only one data // send total marks and %
-		res.setMarks(x);
-		System.out.println(result.toString());
+		ResultRespDto res = new ResultRespDto(marks, percentage, s.getSFirstName(), s.getSLastName(), result.get(0).getStd(), result.get(0).getExamName());
+		
 		return res;
+		
 	}
 
 	@Override
-	public AttendanceRespDto getAttendance(Long stu) {
+	public List<AttendanceRespDto> getAttendance(Long stu) {
 		
 		Student s= new Student();
 		s.setStudentId(stu);
 		
 		List<AttendanceRespDto> attend =attDao.getAttendance(s);
 		
-		AttendanceRespDto att = attend.get(0);
-		System.out.println(attend.toString());
+//		AttendanceRespDto att = attend.get(0);
+//		System.out.println(attend.toString());
 		
-		return att;
+		return attend;
 	}
 	
 	

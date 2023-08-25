@@ -67,17 +67,17 @@ public class TeacherServiceImpl implements TeacherService {
 	@Override
 	public Result addResult(ResultReqDto request) {
 		
-		System.out.println(request.getExam_name());
+		System.out.println(request.getExamName());
 		
-		Exam e = examDao.findByExamName(request.getExam_name())
+		Exam e = examDao.findByExamName(request.getExamName())
 				.orElseThrow(() -> new ResourceNotFoundException("Exam details not found in addResult of teaservice"));
 		System.out.println(e);
 
-		Subject su = subjDao.findBySubjectName(request.getSubject_name())
+		Subject su = subjDao.findBySubjectName(request.getSubjectName())
 				.orElseThrow(() -> new ResourceNotFoundException("Subject details not found in addResult of teaservice"));
 		System.out.println(su);
 		
-		Student st = stuDao.findBySFirstName(request.getS_first_name())
+		Student st = stuDao.findBySFirstName(request.getSFirstName())
 				.orElseThrow(() -> new ResourceNotFoundException("Student details not found in addResult of teaservice"));
 		System.out.println(st);
 		

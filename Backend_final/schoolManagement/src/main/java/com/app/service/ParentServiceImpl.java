@@ -80,7 +80,7 @@ public class ParentServiceImpl implements ParentService {
 		}
 		double percentage = (marks*100)/(count*100);
 		
-		ResultRespDto res = new ResultRespDto(marks, percentage, s.getSFirstName(), s.getSLastName(), list.get(0).getStd(), list.get(0).getExam_name());
+		ResultRespDto res = new ResultRespDto(marks, percentage, s.getSFirstName(), s.getSLastName(), list.get(0).getStd(), list.get(0).getExamName());
 		
 		return res;
 		
